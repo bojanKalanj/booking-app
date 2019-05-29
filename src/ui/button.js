@@ -10,5 +10,6 @@ export const ButtonPink = styled.button`
     background: none;
     padding: 10px;
     color: ${pink};
+    width: ${props => props.width};
     ${props => props.margin()};
 `;

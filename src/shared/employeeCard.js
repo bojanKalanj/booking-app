@@ -3,9 +3,14 @@ import { connect } from 'react-redux';
 
 import { Card } from '../ui/card';
 import { ButtonPink } from '../ui/button';
+import {choseAppointment} from '../actions';
 
-const employeeCard = ({appointments, empID, name, day}) => {
+const employeeCard = ({appointments, empID, name, day, choseAppointment}) => {
+    console.log(appointments);
+    console.log("day: ", day);
+
     let availableAppointments = appointments.filter(ap => ap.empID === empID && ap.day === day);
+    console.log("availableAppointments: ", availableAppointments);
     return (
       <Card
         width="30%"
@@ -14,7 +19,12 @@ const employeeCard = ({appointments, empID, name, day}) => {
         <h3>{name}</h3>
         {availableAppointments.map(appointment => {
           return (
-            <ButtonPink key={appointment.time} margin={() => "margin: 2px"}>
+            <ButtonPink
+              width="19%"
+              key={appointment.time}
+              margin={() => "margin: 1px"}
+              onClick={() => choseAppointment(appointment.time, empID, day)}
+            >
               {appointment.time}
             </ButtonPink>
           );
@@ -29,4 +39,4 @@ const mapStateToProps = ({ appointments }) => {
     }
 }
 
-export default connect(mapStateToProps)(employeeCard);
+export default connect(mapStateToProps, { choseAppointment })(employeeCard);
