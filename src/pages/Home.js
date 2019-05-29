@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import syled from 'styled-components';
 
@@ -35,17 +35,25 @@ const Home = ({ employees }) => {
       "sunday"
     ];
  
-    const onValueSelected = li => {
-        console.log(li)
-    }
+    let [ selectedDay, onValueSelected ] = useState(setToday());
  
     return (
       <HomeWrap>
-        <Select width="230px" list={days} onValueSelected={onValueSelected} selected={setToday()} />
+        <Select
+          width="230px"
+          list={days}
+          onValueSelected={onValueSelected}
+          selected={setToday()}
+        />
         <div>
           {employees.map(emp => {
             return (
-              <EmployeeCard key={emp.id} empID={emp.id} name={emp.name} />
+              <EmployeeCard
+                key={emp.id}
+                empID={emp.id}
+                name={emp.name}
+                day={selectedDay}
+              />
             );
           })}
         </div>
