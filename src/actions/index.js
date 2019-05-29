@@ -1,5 +1,7 @@
-import {choseAppointment} from './choseAppointment';
+import { choseAppointment } from "./choseAppointment";
+import { setAppointments } from "./setAppointments";
 
 export {
-    choseAppointment
+    choseAppointment,
+    setAppointments
 }

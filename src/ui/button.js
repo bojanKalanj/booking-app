@@ -1,13 +1,13 @@
 import styled from 'styled-components';
-import {pink} from './colors';
+import {pink, gray} from './colors';
 
 export const ButtonDefault = styled.button`
     
 `;
 
-export const ButtonPink = styled.button`
-    border: 1px solid ${pink};
-    background: none;
+export const ButtonGray = styled.button`
+    border: none;
+    background: ${gray};
     padding: 10px;
     color: ${pink};
     width: ${props => props.width};
