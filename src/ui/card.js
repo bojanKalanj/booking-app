@@ -5,5 +5,5 @@ export const Card = styled.div`
     background: #fff;
     padding: 10px;
     float: left;
-    margin: 10px;
+    ${props => props.margin()}
 `;

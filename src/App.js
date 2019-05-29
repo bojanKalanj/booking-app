@@ -1,12 +1,12 @@
 import React from 'react';
 import Home from './pages/Home';
+import {Container} from './ui/container';
 
 const App = props => {
-  console.log(props)
   return (
-    <div className="App">
+    <Container>
       <Home />
-    </div>
+    </Container>
   );
 }
 

@@ -2,17 +2,23 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { Card } from '../ui/card';
-import { Container } from '../ui/container';
+import { ButtonPink } from '../ui/button';
 
 const employeeCard = ({appointments, empID, name}) => {
-    console.log(appointments, empID)
+    let availableAppointments = appointments.filter(ap => ap.empID === empID);
+    console.log("availableAppointments: ", availableAppointments);
     return (
-        <Container>
-            <Card width="30%">
-                <h3>{name}</h3>
-            </Card>
-        </Container>
-    )
+      <Card width="30%" margin={() => "margin-right: 20px; margin-top: 20px;"}>
+        <h3>{name}</h3>
+        {availableAppointments.map(appointment => {
+          return (
+            <ButtonPink key={appointment.time} margin={() => "margin: 2px"}>
+              {appointment.time}
+            </ButtonPink>
+          );
+        })}
+      </Card>
+    );
 }
 
 const mapStateToProps = ({ appointments }) => {
