@@ -18,7 +18,9 @@ const EmployeeCard = ({
     ap => ap.empID === empID && ap.day === day
   );
 
-  let [shift, onValueSelected] = useState();
+  let [shift, onValueSelected] = useState(" ");
+  console.log(availableAppointments);
+  console.log(shift);
 
   // NEEDS REFACTORING!
   const getAllWorkingHours = (from = "08:30", to = "19:40") => {
@@ -58,11 +60,14 @@ const EmployeeCard = ({
   };
 
   useEffect(() => {
+    console.log("useEffect");
     if (shift === "first shift") {
       let hours = getAllWorkingHours("08:00", "15:40");
+      onValueSelected("");
       setAppointments(hours, empID, day);
     } else if (shift === "second shift") {
       let hours = getAllWorkingHours("16:00", "21:00");
+      onValueSelected("");
       setAppointments(hours, empID, day);
     } else {
       return;
